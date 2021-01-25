@@ -1,8 +1,15 @@
-function someGeneric<T>(value: T): T {
-    return value;
+const fruits: string[] = ['apple', 'mango', 'banana']
+const corners: Array<string> = ['left', 'top', 'bottom', 'right']
+
+function createObjects<T extends object, R extends object>(firstObj: T, secondObj: R): T & R {
+    return { ...firstObj, ...secondObj }
 }
 
-console.log(someGeneric('apple').length);
-console.log(someGeneric(12));
+const dog = createObjects({ name: 'Fido' }, { weight: 12 });
+const notebook = createObjects({ brand: 'Apple' }, { os: 'MacOS' });
 
-const numbers: Array<number> = [1,2,3,4,5];
+const calc = createObjects({ country: 'Japan' }, { population: 12000 });
+
+console.log(dog);
+console.log(notebook);
+console.log(calc);
